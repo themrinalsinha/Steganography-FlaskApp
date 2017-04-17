@@ -1,0 +1,42 @@
+body { background-color: #cfd8dc; }
+.top_space_div { height:100px; border:groove; background-image: ; }
+
+.selection_div { box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+/*
+.selection_div { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1); }
+.selection_div:hover { box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+*/
+
+
+.graph_div_body { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1); height: 205px; background-color: white; }
+.graph_div_body:hover { box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+
+.h5_edits { margin-top: -8px; color: #eceff1; }
+.panel_content_div{ height: 380px; }
+textarea { width: 100%; height: 260px; resize: none; padding: 12px 20px; border-radius: 5px; border: 2px solid #cfd8dc; background-color: #eceff1; }
+.btn_submit{ width: 100%; margin-top: 6px;}
+
+.image-preview-input {
+    position: relative;
+	overflow: hidden;
+	margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
+}

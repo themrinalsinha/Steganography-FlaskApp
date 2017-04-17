@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Steganography</title>
+    <!--To ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/node_modules/chartist/dist/chartist.min.css">
+
+        <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="/static/node_modules/chartist/dist/chartist.min.js"></script>
+        <script src="/static/node_modules/chart.js/dist/Chart.bundle.min.js"></script>
+        <script src="/static/node_modules/chart.js/dist/Chart.min.js"></script>
+
+</head>
+<body>
+ <style>
+            body {background-color: #cfd8dc; }
+            /*.top_space_div { height:233px; margin-left:8px; }*/
+
+            .selection_div { box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+
+            .graph_div_body { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+              transition: all 0.3s cubic-bezier(.25,.8,.25,1); height: 205px; background-color: white; }
+            .graph_div_body:hover { box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+
+            .h5_edits { margin-top: -8px; color: #eceff1; }
+            .panel_content_div{ height: 420px; }
+            textarea { width: 100%; height: 260px; resize: none; padding: 12px 20px; border-radius: 5px; border: 2px solid #cfd8dc; background-color: #eceff1; }
+            .btn_submit{ width: 100%; margin-top: 6px;}
+            .image-preview-input {
+              position: relative;
+            	overflow: hidden;
+            	margin: 0px;
+                 color: #333;
+              background-color: #fff;
+           border-color: #ccc;    }
+
+    .image-preview-input input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+                                            }
+    .image-preview-input-title {
+    margin-left:2px;
+                               }
+
+    </style>
+        <div class="container">
+            <div class="row">
+                <!-- Top Space -->
+                <!-- <div class="col-xs-12 top_space_div">
+                    <img src="/static/hack.png" class="img-responsive" alt="Responsive image" >
+                </div> -->
+            </div>
+            <div class="col-md-3"></div>
+             <div class="col-md-6">
+                 <div class="row">
+                     <div class="panel panel-primary selection_div">
+                            <!-- Select Image option -->
+                            <div class="panel-heading ">
+                                <h3><i class="fa fa-rocket" aria-hidden="true"></i> ISRO | xTerm-inate</h3>
+                                <h5 class="h5_edits">Secure data transmission using Steganography</h5>
+                            </div>
+
+                            <div class="panel-body panel_content_div">
+                                <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+                                    <!-- image-preview-filename input [CUT FROM HERE]-->
+                                    <div class="input-group image-preview">
+                                        <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                                        <span class="input-group-btn">
+                                        <!-- image-preview-clear button -->
+                                            <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                                <span class="glyphicon glyphicon-remove"></span> Clear
+                                            </button>
+                                        <!-- image-preview-input -->
+                                            <div class="btn btn-default image-preview-input">
+                                                <span class="glyphicon glyphicon-folder-open"></span>
+                                                <span class="image-preview-input-title">Browse</span>
+                                                <input type="file" id="selected_img" accept="image/png" name="image_file"/> <!-- rename it -->
+                                            </div>
+                                        </span>
+                                    </div><!-- /input-group image-preview [TO HERE]-->
+
+
+
+                                    <span class="counter" style="float: right; color: #607d8b;">Max Characters : 500</span>
+                                    <textarea class="text_area" name="message" placeholder="Enter your message..." required></textarea><br>
+                                    <button type="submit" id="btn_submitdata" class="btn btn-primary btn_submit">Hide it ! <i class="fa fa-rocket" aria-hidden="true"></i></button>
+
+                                </form>
+                                <div class="panel-footer small" style="color : #546e7a; text-align: center; margin-top: 5px;"><i class="fa fa-copyright" aria-hidden="true"></i> xTerm-inate | Smart India Hackathon 2017
+                                </div>
+                            </div>
+
+                     </div>
+                 </div>
+             </div>
+            <div class="col-md-3"></div>
+<!--
+            <div class="col-md-8 col-md-pull-4">
+                <div class="row">
+                         Original Image details
+                        <div class="col-md-12" id="div_graph_1">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Original Image - Pixel Details.</div>
+                                <div class="panel-body graph_div_body">
+                                    <canvas id="myChart" style="width:100%; height:25px" ></canvas>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-12" id="div_graph_2" style="margin-bottom: 30px">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Image with Hidden Message - Pixel Details.</div>
+                                <div class="panel-body graph_div_body">
+                                    <canvas id="myChart1" width="100%" height="25px"></canvas>
+
+                                </div>
+
+                            </div>
+
+                         </div>
+
+                 </div>
+            </div>
+-->
+        </div>
+    </div>
+
+        <script src="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/static/assets/js/bootstrap-filestyle.js"></script>
+        <script src="/static/assets/js/main.js"></script>
+</body>
+</html>

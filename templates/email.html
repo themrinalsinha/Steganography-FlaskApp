@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Email</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- importing CSS packages-->
+    <link rel="stylesheet" href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/node_modules/font-awesome/css/font-awesome.css">
+    <!-- Importing Js package-->
+    <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- custom css-->
+    <style>
+         body {background-color: #cfd8dc; }
+        .focusedInput {
+        border-color: rgba(82,168,236,.8);
+        outline: 0;
+        outline: thin dotted \9;
+        -moz-box-shadow: 0 0 8px rgba(82,168,236,.6);
+        box-shadow: 0 0 8px rgba(82,168,236,.6) !important;
+        }
+        textarea {width:100%; height: 220px; resize: none; padding: 12px 20px; border-radius: 5px; border: 2px solid #cfd8dc; background-color: #eceff1; }
+        .btn_submit{ width: 100%; margin-top: 3px;}
+        .p{
+            body {background-color: #cfd8dc; }
+            background-image: url(../static/Hack.png);
+            background-position:right;
+            background-size: cover;
+
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+          }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row"> <!--Top header-->
+             <div class="col-xs-12">
+                 <img src="/static/hack1.png" class="img-responsive" alt="" >
+             </div>
+        </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="row">
+                    <!--Panel Content-->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading p">
+
+                            <h3><i class="fa fa-rocket" aria-hidden="true"></i>ISRO | xTerm-inate</h3>
+                             <h5 class="h5_edits">Secure data transmission using Steganography</h5>
+
+
+<!--<img src="/static/Hack.png" class="img-responsive pull-right" alt="Responsive image" >-->
+
+                        </div>
+                        <div class="panel-body panel-content-div">
+
+                             <form id="upload-form" class="form-horizontal" action="/email" method="post" enctype="multipart/form-data">
+                                 <div class="form-group">
+                                     <label class="col-sm-1 control-label" style="color:blue;"> Token </label>
+                                     <div class="col-sm-4">
+                                         <input type="text" class="form-control focusedInput" readonly="readonly" name="token" value="{{ access_key }}">
+                                     </div>
+                                 </div>
+                                 <div class="form-group">
+                                     <label for="inputEmail3" class="col-sm-1 control-label" style="color:blue;">@Email</label>
+                                     <div class="col-sm-8">
+                                        <input type="email" id="inputEmail3" class="form-control" required name="email" placeholder="Enter reciever email id">
+                                     </div>
+                                 </div>
+
+                                    <textarea class="text_area" name="remark_tb" placeholder="Remark here, If required.."></textarea><br>
+                                    <button type="submit" id="btn_submitdata" class="btn btn-primary btn_submit">Send mail !<i class="fa fa-rocket" aria-hidden="true"></i></button>
+                             </form>
+                        </div>
+                        <div class="panel-footer small" style="color : #546e7a; text-align: center;">
+                            <i class="fa fa-copyright" aria-hidden="true"></i> xTerm-inate | Smart India Hackathon 2017
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reciever End</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/node_modules/font-awesome/css/font-awesome.min.css">
+    <!-- <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script> -->
+
+
+
+</head>
+<body style="background-color:#cfd8dc">
+<style>
+        /*.top_space_div{height:200px;}*/
+        .body_space_div{height:500px; margin-left:180px;}
+        .panel_content_div{ height: 380px; }
+         textarea {width:100%; height: 320px; resize: none; padding: 12px 20px; border-radius: 5px; border: 2px solid #cfd8dc; background-color: #eceff1; }
+</style>
+    <div class="container">
+        <div class="row">
+                <!-- Top Space -->
+
+        </div>
+
+        <div class="row" style="margin-top:30px">
+                <!-- Top Space -->
+            <div class="col-md-8 body_space_div ">
+                <div class="row">
+                     <div class="panel panel-primary selection_div">
+                            <div class="panel-heading ">
+                                <h3><i class="fa fa-rocket" aria-hidden="true"></i> ISRO | xTerm-inate</h3>
+                                <h5 class="h5_edits">Secure data transmission using Steganography</h5>
+                            </div>
+                            <div class="panel-body panel_content_div">
+                                <div class="col-xs-8 col-sm-8">
+                                     <form id="upload-form" action="/retrival" method="post" enctype="multipart/form-data">
+                                         <div class="input-group">
+                                             <input type="text" id="token_text" name="token_id" class="form-control" placeholder="Token for decryption" required="">
+                                             <span class="input-group-btn">
+                                             <button class="btn btn-default btn-primary" type="submit" onclick="showtext()">Go!</button>
+                                             </span>
+
+                                         </div>
+                                        <textarea id="text_area" name="retrival_text" placeholder="Message is..." readonly="readonly">{{ dec_text }}</textarea><br>
+
+
+
+                                </form>
+                                </div>
+                                <div class="col-xs-4 col-sm-4">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading " style="height:35px">
+                                         <h5 class="h5_edits" style="margin-top:-1px" >Image Preview</h5>
+                                        </div>
+                                    </div>
+                                    <img src="/static/enc_image/{{ i_path }}" class="img-responsive" alt="Responsive image">
+
+                                </div>
+                             </div>
+                            <div class="panel-footer small" style="color : #337AB7; text-align: center; margin-top: 5px;"><i class="fa fa-copyright" aria-hidden="true"></i> xTerm-inate | Smart India Hackathon 2017
+                            </div>
+                     </div>
+                 </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
